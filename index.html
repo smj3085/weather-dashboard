@@ -5,46 +5,63 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="style.css" />
     </head>
 
     <body>
-        <header class="text-white text-center p-3">
-            <h1>Weather Dashboard</h1>
+        <header class="jumbotron">
+            <h1 class="text-white text-center">Weather Dashboard</h1>
         </header>
 
-        <main class="container-fluid">
+        <main class="container">
             <div class="row">
                  <!-- Left side content with city search box and past searched cities -->
-                <div id="content-left" class="col-12 col-md-3 p-2 search-column">
-                    <form class="border p-2" id="search-form">
+                <div id="content-left" class="search-column">
+                    <form class="p-3 border-bottom" id="search-form">
                         <h4>Search for a city:</h4>
-                        <input id="search-city" type="text" autofocus="true" class="form-input w-100">
-                        <button id="search-button" class="btn btn-block btn-primary" type="submit" >Search</button>
+                        <div class="search-bar">
+                            <input class="search_input" type="text" name="" placeholder="Enter city">
+                            <button class="btn searchBtn btn-primary"><i class="fas fa-search"></i></button>
+                        </div>
                     </form>
                     <!-- List of previously searched cities -->
-                    <div class="past-search" id="past-search-cities">
-                        <ul id="city-results" class="list-group mt-4"></ul>
+                    <div class="search-history">
+                        <ul id="city-history" class="list-group mt-4"></ul>
                     <!-- Clear previous sarches -->
-                        <button id="clear-storage" class="btn btn-block btn-dark">Clear results</button>
+                        <button id="clearHistoryBtn" class="btn btn-info mt-2">Clear results</button>
                     </div>
                 </div>
             </div>
             <!-- Right content-showing current weather in searched city & 5 day forecast -->
-            <div id="content-right" class="col-md-9 pt-4">
+            <div class="content-right">
                 <!-- Main section - current weather in searched city -->
-                <div class="border rounded selected-city" id="current-forecast">
-                    <div class="col-12"></div>
-                        <h2 id="searched-city"></h2>
-                        <div id="city-weather-container" class="list-group"></div>
-                    </div>  
+                <div class="city-weather border p-2">
+                    <div class="row">
+                        <h3 class="city-name">City Name</h3>
+                        <h3 class="current-date"></h3>
+                        <img class="weather-icon"></img>
+                    </div>
+                    <div class="row">
+                        <p class="tempC-title">Temperature (C): <span class="tempC"></span></p>
+                    </div>
+                    <div class="row">
+                        <p class="humidity-title">Humidity: <span class="humidity"></span> </p>
+                    </div>
+                    <div class="row">
+                        <p class="wind-title">Wind Speed: <span class="wind"></span> </p>
+                    </div>
+                    <div class="row">
+                        <p class="uv-index-title">UV Index: <span class="uv-index"></span></p>
+                    </div>
                 </div>
                 <!-- Five day forecast -->
-                <div class="border rounded" id="five-day-forecast">
-                        <h2 class="col-12" id="forecast"></h2>
-                        <div class="mt-5" id="fiveday-container"></div>
+                <div class="five-day-container border mt-3">
+                    <h4 class="five-day-title">5-day forecast:</h4>
+                    <div class="card-forecast">
+                    </div>
                 </div>  
             </div>
         </main>
@@ -55,6 +72,6 @@
         <!-- Moment.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
         <!-- Custom JavaScript -->
-        <script src="./assets/js/script.js"></script>
+        <script src="script.js"></script>
     </body>
 </html>

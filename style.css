@@ -2,6 +2,94 @@ body {
     font-family: 'Fira Sans', sans-serif;
 }
 
-header {
-    background-image: linear-gradient(to right, blue, navy);
+.jumbotron {
+    background-image: linear-gradient(to right, aliceblue, navy);
+    padding: 10px;
+}
+
+h1, h3, h4 {
+    font-weight: bold;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+#clearHistoryBtn {
+    margin-left: 15px;
+}
+
+.five-day-container {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+}
+
+.card-forecast {
+    margin-left: 58.5px;
+    width: 175px;
+    height: auto;
+    border-radius: 5px;
+    color: white;
+    font-size: larger;
+    background-color: #3498db;
+}
+
+.five-day-container .card-text {
+    margin-bottom: 15px;
+    padding: 10px 30px 5px 10px;
+}
+
+.five-day-card img {
+    margin-left: 10%;
+}
+
+img {
+    width: auto;
+    height: auto;
+}
+
+input {
+    height: 40px;
+    width: auto;
+}
+
+li:first-child {
+    height: 100%;
+    font-size: larger;
+    background-color: white;
+    border: solid 1px #cecfd2;
+    border-radius: 6px 6px 0px 0px;
+    padding: 12px 5px 12px 15px;
+    list-style: none;
+}
+
+li {
+    height: 100%;
+    font-size: larger;
+    background-color: white;
+    border: solid 1px #cecfd2;
+    border-radius: 0px 0px 0px 0px;
+    padding: 12px 5px 12px 15px;
+    list-style: none;
+}
+
+li:last-child {
+    height: 100%;
+    font-size: larger;
+    background-color: white;
+    border: solid 1px #cecfd2;
+    border-radius: 0px 0px 6px 6px;
+    padding: 12px 5px 12px 15px;
+    list-style: none;
+}
+
+.row {
+    display: flex;
+    margin: 5px;
+}
+
+.row * {
+    margin-right: 5px;
 }
