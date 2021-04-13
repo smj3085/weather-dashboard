@@ -1,6 +1,6 @@
 var apiKey = "d43ac1f55c002c78fde32d40ed83cebe"
 var searchBtn = $("#search-button");
-var clearBtn = $("#clear-button");
+var clearBtn = $("#clearHistoryBtn");
 
 // store the value of the input
 var currentCity = "";
@@ -8,19 +8,21 @@ var lastCity = "";
 
 // right content - searched city current weather
 var cityName = $(".city-name")
-var currentDate = $(".current-date");
+var cityCurrentDate = $(".current-date");
 var weatherIcon = $(".weather-icon");
 var tempCEl = $(".tempC");
 var humidityEl = $(".humidity");
-var windEl = $(".wind");
+var windSpeedEl = $(".wind");
 var uvIndexEl = $(".uv-index");
+
 
 searchBtn.click(function(event) {
     event.preventDefault()
 
-    const searchCity = $('#search-city').val();
-    const apiKey = 'd43ac1f55c002c78fde32d40ed83cebe';
+    var searchCity = $('.search-input').val();
+    var apiKey = 'd43ac1f55c002c78fde32d40ed83cebe';
 
+    // received help for below 
     const getCityGeoCoords = async () => {
     const request = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${apiKey}&units=metric`);
     const data = await request.json();
@@ -34,16 +36,50 @@ searchBtn.click(function(event) {
     };
 
     const callDataInOrder = async () => {
-    const cityGeoCoords = await getCityGeoCoords();
-    const forecastData = await getForecastData(cityGeoCoords);
-    console.log(forecastData)
-};
+        const cityGeoCoords = await getCityGeoCoords();
+        const forecastData = await getForecastData(cityGeoCoords);
+        console.log(forecastData)
+
+        var cityDate = moment.tz(new Date(),forecastData.timezone).format('DD/MM/YY');
+
+        console.log(cityDate)
+
+        cityName.text(searchCity) 
+        cityCurrentDate.text(` (${cityDate})`)
+        tempCEl.text(`${forecastData.current.temp}\u00B0C`)
+        humidityEl.text(forecastData.current.humidity)
+        windSpeedEl.text(forecastData.current.wind_speed)
+        uvIndexEl.text(forecastData.current.uvi)
+
+        for (var i=0; i<5; i++) {
+            // $(`#card-date-${i}`).text(new Date(forecastData.daily[i].dt))
+            $(`#card-temp-${i}`).text(forecastData.daily[i].temp.day)
+        }
+
+
+        // Store searches into local storage 
+        localStorage.setItem(searchCity, JSON.stringify(forecastData))
+        $(`#city-history`).append(`<button id="${searchCity}">${searchCity}</button>`)
+        
+    };
 
     callDataInOrder();
 
-    
-//     .then(response => response.json())
-//         .then(data => {
+})
+
+
+
+clearBtn.on("click", function() {
+    // clear all local storage
+    localStorage.clear();
+
+    // clear all description from page
+    $(".search-history").val("");
+
+})
+
+
+//     
 //     let currentWeatherHTML = `
 //     <h3>${response.name} ${currentMoment.format("(MM/DD/YY)")}<img src="${currentWeatherIcon}"></h3>
 //     <ul class="list-unstyled">
@@ -56,4 +92,3 @@ searchBtn.click(function(event) {
 // $('#current-weather').html(currentWeatherHTML);
 
 
-})

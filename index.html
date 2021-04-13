@@ -12,19 +12,19 @@
     </head>
 
     <body>
-        <header class="jumbotron">
-            <h1 class="text-white text-center">Weather Dashboard</h1>
+        <header class="header">
+            <h1 class="header-title">Weather Dashboard</h1>
         </header>
 
-        <main class="container">
-            <div class="row">
+        <main class="search-content">
+            <div>
                  <!-- Left side content with city search box and past searched cities -->
                 <div id="content-left" class="search-column">
                     <form class="p-3 border-bottom" id="search-form">
                         <h4>Search for a city:</h4>
                         <div class="search-bar">
-                            <input class="search_input" type="text" name="" placeholder="Enter city">
-                            <button class="btn searchBtn btn-primary"><i class="fas fa-search"></i></button>
+                            <input class="search-input" type="text" name="" placeholder="Enter city">
+                            <button id="search-button" class="btn btn-primary"><i class="fas fa-search"></i></button>
                         </div>
                     </form>
                     <!-- List of previously searched cities -->
@@ -39,7 +39,7 @@
             <div class="content-right">
                 <!-- Main section - current weather in searched city -->
                 <div class="city-weather border p-2">
-                    <div class="row">
+                    <div class="city-content">
                         <h3 class="city-name">City Name</h3>
                         <h3 class="current-date"></h3>
                         <img class="weather-icon"></img>
@@ -60,7 +60,37 @@
                 <!-- Five day forecast -->
                 <div class="five-day-container border mt-3">
                     <h4 class="five-day-title">5-day forecast:</h4>
-                    <div class="card-forecast">
+                    <div class="cards-forecast">
+                        <div class="card" id="card-0">
+                            <p id="card-date-0"></p>
+                            <p id="card-temp-0">temp: </p>
+                            <p id="card-wind-0">wind: </p>
+                            <p id="card-humidity-0">humidity: </p>
+                        </div>
+                        <div class="card" id="card-1">
+                            <p id="card-date-1"></p>
+                            <p id="card-temp-1">temp: </p>
+                            <p id="card-wind-1">wind: </p>
+                            <p id="card-humidity-1">humidity: </p>
+                        </div>
+                        <div class="card" id="card-2">
+                            <p id="card-date-2"></p>
+                            <p id="card-temp-2">temp: </p>
+                            <p id="card-wind-2">wind: </p>
+                            <p id="card-humidity-2">humidity: </p>
+                        </div>
+                        <div class="card" id="card-3">
+                            <p id="card-date-3"></p>
+                            <p id="card-temp-3">temp: </p>
+                            <p id="card-wind-3">wind: </p>
+                            <p id="card-humidity-3">humidity: </p>
+                        </div>
+                        <div class="card" id="card-4">
+                            <p id="card-date-4"></p>
+                            <p id="card-temp-4">temp: </p>
+                            <p id="card-wind-4">wind: </p>
+                            <p id="card-humidity-4">humidity: </p>
+                        </div>
                     </div>
                 </div>  
             </div>
@@ -71,6 +101,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!-- Moment.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.20/moment-timezone-with-data.min.js"></script>
         <!-- Custom JavaScript -->
         <script src="script.js"></script>
     </body>
