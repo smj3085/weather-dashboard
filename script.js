@@ -3,7 +3,7 @@ var searchBtn = $("#search-button");
 var clearBtn = $("#clearHistoryBtn");
 
 // right content - searched city current weather
-var cityName = $(".city-name")
+var cityName = $(".city-name");
 var cityCurrentDate = $(".current-date");
 var weatherIcon = $(".weather-icon");
 var tempCEl = $(".tempC");
@@ -11,7 +11,7 @@ var humidityEl = $(".humidity");
 var windSpeedEl = $(".wind");
 var uvIndexEl = $(".uv-index");
 
-
+// When search button is clicked...
 searchBtn.click(function(event) {
     event.preventDefault()
 
@@ -40,7 +40,7 @@ searchBtn.click(function(event) {
 
         // Store searches into local storage 
         localStorage.setItem(searchCity, JSON.stringify(forecastData))
-        $(`#city-history`).append(`<button id="${searchCity}" class="btn btn-secondary btn-custom" onclick="onCityClick(event)">${searchCity}</button>`)
+        $(`#city-history`).append(`<button id="${searchCity}" class="btn btn-secondary btn-custom text-capitalize" onclick="onCityClick(event)">${searchCity}</button>`)
         
     };
 
@@ -51,15 +51,16 @@ searchBtn.click(function(event) {
 function populateHtml(city, data) {
     var cityDate = moment.tz(new Date(), data.timezone).format('DD/MM/YY HH:MM');
 
-    // var displayWeatherIcon = "http://openweathermap.org/img/wn/10d@2x.png"
+    var displayWeatherIcon = (`http://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`)
 
     cityName.text(city) 
     cityCurrentDate.text(`(${cityDate})`)
-    // weatherIcon.attr(displayWeatherIcon)
+    weatherIcon.attr("src", displayWeatherIcon)
     tempCEl.text(`${data.current.temp}\u00B0C`)
     humidityEl.text(`${data.current.humidity}%`)
     windSpeedEl.text(`${data.current.wind_speed}MPH`)
     uvIndexEl.text(data.current.uvi)
+    
     // // change UV functions
     var uvIndexRank  = data.current.uvi
         if(uvIndexRank<=2){
@@ -71,15 +72,22 @@ function populateHtml(city, data) {
             uvIndexEl.addClass("severe");
         };
 
-    // 5-day forecast data 
-    for (var i=0; i<5; i++) {
-      
-        // $(`#card-date-${i}`).text(data.daily[i].dt)
-        $(`#card-temp-${i}`).text(data.daily[i].temp.day)
-        $(`#card-wind-${i}`).text(data.daily[i].wind_speed)
-        $(`#card-humidity-${i}`).text(data.daily[i].humidity)
-    }
 
+    // 5-day forecast data 
+    for (var i=1; i<6; i++) {
+        
+        // convert from unix to date format
+        var dateString = moment.unix(data.daily[i].dt).format("DD/MM/YYYY");
+        var forecastIcon = (`http://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png`)
+
+        $(`#card-date-${i}`).text(dateString)
+        $(`#card-icon-${i}`).attr("src", forecastIcon)
+        $(`#card-temp-${i}`).text(`${data.daily[i].temp.day}\u00B0C`)
+        $(`#card-wind-${i}`).text(`${data.daily[i].wind_speed}MPH`)
+        $(`#card-humidity-${i}`).text(`${data.daily[i].humidity}%`)
+    }
+}
+ 
 function onCityClick(event) {
     var cityKey = event.srcElement.id;
     var storedCityData = localStorage.getItem(cityKey)
@@ -97,4 +105,4 @@ clearBtn.on("click", function() {
     }
 
     clearHistory();
-})}
+})
