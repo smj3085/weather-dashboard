@@ -6,8 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="style.css" />
     </head>
 
@@ -17,22 +15,20 @@
         </header>
 
         <main class="search-content">
-            <div>
-                 <!-- Left side content with city search box and past searched cities -->
-                <div id="content-left" class="search-column">
-                    <form class="p-3 border-bottom" id="search-form">
-                        <h4>Search for a city:</h4>
-                        <div class="search-bar">
-                            <input class="search-input" type="text" name="" placeholder="Enter city">
-                            <button id="search-button" class="btn btn-primary"><i class="fas fa-search"></i></button>
-                        </div>
-                    </form>
-                    <!-- List of previously searched cities -->
-                    <div class="search-history">
-                        <ul id="city-history" class="list-group mt-4"></ul>
-                    <!-- Clear previous sarches -->
-                        <button id="clearHistoryBtn" class="btn btn-info mt-2">Clear results</button>
+            <!-- Left side content with city search box and past searched cities -->
+            <div class="search-column content-left">
+                <form class="p-3 border-bottom" id="search-form">
+                    <h4>Search for a city:</h4>
+                    <div class="search-form">
+                        <input id="search-input" class="form-input" type="text" name="" placeholder="Enter city">
+                        <button id="search-button" class="btn btn-primary"><i class="fas fa-search"></i></button>
                     </div>
+                </form>
+                <!-- List of previously searched cities -->
+                <div class="search-history">
+                    <ul id="city-history" class="list-group mt-4"></ul>
+                    <!-- Clear previous sarches -->
+                    <button id="clearHistoryBtn" class="btn btn-info mt-2">Clear results</button>
                 </div>
             </div>
             <!-- Right content-showing current weather in searched city & 5 day forecast -->
@@ -44,59 +40,50 @@
                         <h3 class="current-date"></h3>
                         <img class="weather-icon"></img>
                     </div>
-                    <div class="row">
-                        <p class="tempC-title">Temperature (C): <span class="tempC"></span></p>
-                    </div>
-                    <div class="row">
-                        <p class="humidity-title">Humidity: <span class="humidity"></span> </p>
-                    </div>
-                    <div class="row">
-                        <p class="wind-title">Wind Speed: <span class="wind"></span> </p>
-                    </div>
-                    <div class="row">
-                        <p class="uv-index-title">UV Index: <span class="uv-index"></span></p>
-                    </div>
+                    <p class="tempC-title">Temperature: <span class="tempC"></span></p>
+                    <p class="humidity-title">Humidity: <span class="humidity"></span> </p>
+                    <p class="wind-title">Wind Speed: <span class="wind"></span> </p>
+                    <p class="uv-index-title">UV Index: <span class="uv-index"></span></p>
                 </div>
                 <!-- Five day forecast -->
                 <div class="five-day-container border mt-3">
-                    <h4 class="five-day-title">5-day forecast:</h4>
+                    <h4 class="five-day-title">5-day Forecast:</h4>
                     <div class="cards-forecast">
                         <div class="card" id="card-0">
                             <p id="card-date-0"></p>
-                            <p id="card-temp-0">temp: </p>
-                            <p id="card-wind-0">wind: </p>
-                            <p id="card-humidity-0">humidity: </p>
+                            <p class="forecast-temp">Temp: <span id="card-temp-0"></span></p>
+                            <p class="forecast-wind">Wind: <span id="card-wind-0"></span></p>
+                            <p class="forecast-humidity">Humidity: <span id="card-humidity-0"></span></p>
                         </div>
                         <div class="card" id="card-1">
                             <p id="card-date-1"></p>
-                            <p id="card-temp-1">temp: </p>
-                            <p id="card-wind-1">wind: </p>
-                            <p id="card-humidity-1">humidity: </p>
+                            <p class="forecast-temp">Temp: <span id="card-temp-1"></span></p>
+                            <p class="forecast-wind">Wind: <span id="card-wind-1"></span></p>
+                            <p class="forecast-humidity">Humidity: <span id="card-humidity-1"></span></p>
                         </div>
                         <div class="card" id="card-2">
                             <p id="card-date-2"></p>
-                            <p id="card-temp-2">temp: </p>
-                            <p id="card-wind-2">wind: </p>
-                            <p id="card-humidity-2">humidity: </p>
+                            <p class="forecast-temp">Temp: <span id="card-temp-2"></span></p>
+                            <p class="forecast-wind">Wind: <span id="card-wind-2"></span></p>
+                            <p class="forecast-humidity">Humidity: <span id="card-humidity-2"></span></p>
                         </div>
                         <div class="card" id="card-3">
                             <p id="card-date-3"></p>
-                            <p id="card-temp-3">temp: </p>
-                            <p id="card-wind-3">wind: </p>
-                            <p id="card-humidity-3">humidity: </p>
+                            <p class="forecast-temp">Temp: <span id="card-temp-3"></span></p>
+                            <p class="forecast-wind">Wind: <span id="card-wind-3"></span></p>
+                            <p class="forecast-humidity">Humidity: <span id="card-humidity-3"></span></p>
                         </div>
                         <div class="card" id="card-4">
                             <p id="card-date-4"></p>
-                            <p id="card-temp-4">temp: </p>
-                            <p id="card-wind-4">wind: </p>
-                            <p id="card-humidity-4">humidity: </p>
+                            <p class="forecast-temp">Temp: <span id="card-temp-4"></span></p>
+                            <p class="forecast-wind">Wind: <span id="card-wind-4"></span></p>
+                            <p class="forecast-humidity">Humidity: <span id="card-humidity-4"></span></p>
                         </div>
                     </div>
                 </div>  
             </div>
         </main>
 
-        <footer></footer>
         <!-- jQuery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!-- Moment.js -->
