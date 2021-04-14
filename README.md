@@ -10,8 +10,8 @@ When
 * Screenshots of webpage
 
 # GitHub Repository URL
-* https://github.com/smj3085/workday_scheduler
-* https://smj3085.github.io/workday_scheduler/.
+* https://github.com/smj3085/weather-dashboard
+* https://smj3085.github.io/weather-dashboard/
 
 # Screenshot
-![picture](./assets/images/screencapture1.png)
+![picture](./assets/screencapture1.png)
