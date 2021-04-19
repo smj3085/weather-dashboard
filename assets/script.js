@@ -20,7 +20,7 @@ searchBtn.click(function(event) {
 
     // received help with using async await
     const getCityGeoCoords = async () => {
-        const request = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${apiKey}&units=metric`);
+        const request = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${apiKey}&units=metric`);
         const data = await request.json();
         return data.coord;
     };
@@ -51,7 +51,7 @@ searchBtn.click(function(event) {
 function populateHtml(city, data) {
     var cityDate = moment.tz(new Date(), data.timezone).format('DD/MM/YY HH:MM');
 
-    var displayWeatherIcon = (`http://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`)
+    var displayWeatherIcon = (`https://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`)
 
     cityName.text(city) 
     cityCurrentDate.text(`(${cityDate})`)
@@ -78,7 +78,7 @@ function populateHtml(city, data) {
         
         // convert from unix to date format
         var dateString = moment.unix(data.daily[i].dt).format("DD/MM/YYYY");
-        var forecastIcon = (`http://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png`)
+        var forecastIcon = (`https://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png`)
 
         $(`#card-date-${i}`).text(dateString)
         $(`#card-icon-${i}`).attr("src", forecastIcon)
