@@ -10,10 +10,12 @@ var tempCEl = $(".tempC");
 var humidityEl = $(".humidity");
 var windSpeedEl = $(".wind");
 var uvIndexEl = $(".uv-index");
+var weatherInformation = $(".content-right");
 
 // When search button is clicked...
 searchBtn.click(function(event) {
     event.preventDefault()
+    weatherInformation.show("1000");
 
     var searchCity = $('#search-input').val();
     var apiKey = 'd43ac1f55c002c78fde32d40ed83cebe';
@@ -94,7 +96,7 @@ function onCityClick(event) {
     populateHtml(cityKey, JSON.parse(storedCityData));
 }
 
-clearBtn.on("click", function() {
+clearBtn.click(function() {
     // clear all local storage
     localStorage.clear();
 

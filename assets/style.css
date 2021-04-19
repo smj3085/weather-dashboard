@@ -83,6 +83,10 @@ input {
     text-transform: capitalize;
 }
 
+.content-right {
+    display: none;
+}
+
 @media only screen and (max-width: 768px) {
     .search-content {
         flex-direction: column;
